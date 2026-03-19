@@ -1,0 +1,32 @@
+{
+  "name": "menu-planner",
+  "version": "1.0.0",
+  "description": "A web application that creates personalized meal plans based on grocery store sales and recipe websites",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
+    "server:dev": "cd server && npm run dev",
+    "client:dev": "cd client && npm run dev",
+    "build": "npm run client:build && npm run server:build",
+    "client:build": "cd client && npm run build",
+    "server:build": "cd server && npm run build",
+    "start": "cd server && npm start",
+    "install:all": "npm install && cd client && npm install && cd ../server && npm install"
+  },
+  "keywords": [
+    "meal-planning",
+    "grocery",
+    "recipes",
+    "savings",
+    "kroger"
+  ],
+  "author": "Claire Weissman",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "workspaces": [
+    "client",
+    "server"
+  ]
+}

@@ -42,4 +42,27 @@ router.get('/products/search', async (req, res) => {
   }
 });
 
+router.get('/products/sale', async (req, res) => {
+  try {
+    const { locationId, term, limit } = req.query;
+
+    if (!locationId) {
+      return res.status(400).json({ error: 'locationId required' });
+    }
+
+    const saleItems = await krogerService.findSaleItems({
+      searchTerm: term,
+      locationId,
+      limit: limit ? parseInt(limit, 10) : 50,
+    });
+
+    res.json({
+      data: saleItems,
+      count: saleItems.length,
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 module.exports = router;

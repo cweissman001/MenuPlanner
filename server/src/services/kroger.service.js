@@ -106,7 +106,7 @@ class KrogerService {
       'filter.zipCode.near': zipCode,
       'filter.limit': '10',
       'filter.radiusInMiles': radiusInMiles.toString(),
-      'filter.chain': 'Kroger',
+      // 'filter.chain': 'Kroger', // Temporarily removed for debugging
     });
 
     const response = await axios.get(`${this.baseURL}/locations?${params.toString()}`, {
@@ -114,6 +114,16 @@ class KrogerService {
     });
 
     return response.data.data || [];
+  }
+
+  async findLocationById(locationId) {
+    const token = await this.getValidToken();
+    
+    const response = await axios.get(`${this.baseURL}/locations/${locationId}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    return response.data.data || null;
   }
 }
 

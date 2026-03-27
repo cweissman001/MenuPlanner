@@ -22,6 +22,26 @@ router.get('/locations', async (req, res) => {
   }
 });
 
+router.get('/locations/:locationId', async (req, res) => {
+  try {
+    const { locationId } = req.params;
+
+    if (!locationId) {
+      return res.status(400).json({ error: 'locationId required' });
+    }
+
+    const location = await krogerService.findLocationById(locationId);
+
+    if (!location) {
+      return res.status(404).json({ error: 'Location not found' });
+    }
+
+    res.json({ data: location });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 router.get('/products/search', async (req, res) => {
   try {
     const { locationId, term, limit } = req.query;

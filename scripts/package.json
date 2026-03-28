@@ -1,0 +1,22 @@
+{
+  "name": "recipe-scraper",
+  "version": "1.0.0",
+  "description": "Recipe website scraper for Menu Planner project",
+  "main": "recipe-scraper.js",
+  "scripts": {
+    "start": "node recipe-scraper.js",
+    "scrape": "node recipe-scraper.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.5",
+    "cheerio": "^1.0.0-rc.12"
+  },
+  "keywords": [
+    "recipe",
+    "scraping",
+    "web-scraping",
+    "food"
+  ],
+  "author": "Claire Weissman",
+  "license": "MIT"
+}
